@@ -54,3 +54,6 @@ dkms.conf
 # gnlTester
 gnlTester
 gnlTester/*
+
+# main tester
+main.c
