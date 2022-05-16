@@ -6,7 +6,7 @@
 /*   By: mcesar-d <mcesar-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 02:11:57 by mcesar-d          #+#    #+#             */
-/*   Updated: 2022/05/09 10:48:33 by mcesar-d         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:51:11 by mcesar-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,30 @@ char	*get_next_line(int fd)
 	}
 	read_fd(fd, buffer, &line);
 	return (get_line(&line));
+}
+
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+
+int main ()
+{
+	int		fd;
+	char	*ret;
+
+	fd = open("./gnlTester/files/alternate_line_nl_with_nl", O_RDONLY);
+
+	for(int i = 0; i < 20; i++)
+	{
+		ret = get_next_line(fd);
+		if(ret)
+			printf("Ponteiro - %p - %d\n ", ret, *ret);
+			printf("%s",ret);
+			free(ret);
+	}
+	close (fd);
+	return (0);
 }
